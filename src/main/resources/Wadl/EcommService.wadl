@@ -1,0 +1,238 @@
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prefix1="http://www.techarha.com/schema/xsd/ecomm/ProductRequest"><grammars><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.techarha.com/schema/xsd/common/CommonTypes" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.techarha.com/schema/xsd/common/CommonTypes">
+    <xs:complexType name="SizeType">
+        <xs:sequence>
+            <xs:element name="length" type="xs:int"/>
+            <xs:element name="width" type="xs:int"/>
+            <xs:element name="height" type="xs:int"/>
+            <xs:element name="metrics" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="WeightType">
+        <xs:sequence>
+            <xs:element name="value" type="xs:int"/>
+            <xs:element name="metrics" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CapacityType">
+        <xs:sequence>
+            <xs:element name="value" type="xs:int"/>
+            <xs:element name="metrics" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.techarha.com/schema/xsd/ecomm/InventoryRequest" xmlns:ns1="http://www.techarha.com/schema/xsd/ecomm/Product" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.techarha.com/schema/xsd/ecomm/InventoryRequest">
+    <xs:import namespace="http://www.techarha.com/schema/xsd/ecomm/Product"/>
+    <xs:element name="addToStockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element form="qualified" name="quantity" type="xs:int"/>
+                <xs:element form="qualified" name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="removeFromStockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element form="qualified" name="quantity" type="xs:int"/>
+                <xs:element form="qualified" name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.techarha.com/schema/xsd/ecomm/InventoryResponse" xmlns:ns1="http://www.techarha.com/schema/xsd/ecomm/Product" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.techarha.com/schema/xsd/ecomm/InventoryResponse">
+    <xs:import namespace="http://www.techarha.com/schema/xsd/ecomm/Product"/>
+    <xs:element name="stockResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element form="qualified" name="updatedQuantity" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.techarha.com/schema/xsd/ecomm/ProductRequest" xmlns:ns1="http://www.techarha.com/schema/xsd/ecomm/Product" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.techarha.com/schema/xsd/ecomm/ProductRequest">
+    <xs:import namespace="http://www.techarha.com/schema/xsd/ecomm/Product"/>
+    <xs:element name="addProductDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:Product"/>
+                <xs:element name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addVariantDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element ref="ns1:Variant"/>
+                <xs:element name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getProductDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateProductDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element ref="ns1:Product"/>
+                <xs:element name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateVariantDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element ref="ns1:Variant"/>
+                <xs:element name="userID" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.techarha.com/schema/xsd/ecomm/ProductResponse" xmlns:ns1="http://www.techarha.com/schema/xsd/ecomm/Product" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.techarha.com/schema/xsd/ecomm/ProductResponse">
+    <xs:import namespace="http://www.techarha.com/schema/xsd/ecomm/Product"/>
+    <xs:element name="addProductDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addVariantDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getProductDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element ref="ns1:Product"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getVariantDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+                <xs:element ref="ns1:Variant"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pingResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateProductDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateVariantDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns1:UID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.techarha.com/schema/xsd/common/CommonTypes" xmlns:tns="http://www.techarha.com/schema/xsd/ecomm/Product" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.techarha.com/schema/xsd/ecomm/Product">
+    <xs:import namespace="http://www.techarha.com/schema/xsd/common/CommonTypes"/>
+    <xs:element name="Product">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:ProductInfoType"/>
+                <xs:element ref="tns:ProductDetailsType"/>
+                <xs:element ref="tns:ProductCategoryType"/>
+                <xs:element ref="tns:ProductInventoryType"/>
+                <xs:element ref="tns:VendorDetailsType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ProductCategoryType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="xs:string"/>
+                <xs:element name="department" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ProductDetailsType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="thumbnailURI" type="xs:string"/>
+                <xs:element name="imageURI" type="xs:string"/>
+                <xs:element name="color" type="xs:string"/>
+                <xs:element name="size" type="ns1:SizeType"/>
+                <xs:element name="weight" type="ns1:WeightType"/>
+                <xs:element name="capacity" type="ns1:CapacityType"/>
+                <xs:element name="brand" type="xs:string"/>
+                <xs:element name="quantityInStock" type="xs:string"/>
+                <xs:element name="material" type="xs:string"/>
+                <xs:element name="characters" type="xs:string"/>
+                <xs:element name="gender" type="xs:string"/>
+                <xs:element name="type" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ProductInfoType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="productName" type="xs:string"/>
+                <xs:element name="productTitle" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="shortDescription" type="xs:string"/>
+                <xs:element name="ratings" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ProductInventoryType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="quantity" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UID">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="productID" type="xs:long"/>
+                <xs:element name="variantID" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Variant">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:ProductDetailsType"/>
+                <xs:element ref="tns:ProductInventoryType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VendorDetailsType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vendorID" type="xs:string"/>
+                <xs:element name="vendorSUK" type="xs:string"/>
+                <xs:element name="vendorSPUC" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+</grammars><resources base="http://localhost:8080/ProtoService/services/productManager"><resource path="/ManageProduct"><resource path="/addProductDetails"><method name="POST"><request><representation mediaType="application/xml" element="prefix1:addProductDetailsRequest"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/addVariantDetails"><method name="POST"><request><representation mediaType="application/json"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getProductDetails"><method name="GET"><request><representation mediaType="application/json"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getVariantDetails"><method name="GET"><request><representation mediaType="application/json"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/ping"><method name="GET"><response><representation mediaType="application/json"/></response></method></resource><resource path="/updateProductDetails"><method name="POST"><request><representation mediaType="application/json"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/updateVariantDetails"><method name="POST"><request><representation mediaType="application/json"/></request><response><representation mediaType="application/json"/></response></method></resource></resource></resources></application>
